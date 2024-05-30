@@ -1,0 +1,448 @@
+To integrate your professional information and experience into the existing HTML structure and style it attractively using CSS, we will add a dedicated section for your resume and projects. We'll also enhance the design using CSS with colors, hover effects, and other stylistic elements.
+
+Here’s the complete HTML and CSS code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Portfolio Website - Om Yadav</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .l-header {
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav__logo {
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .nav__menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav__list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav__item {
+            margin-left: 20px;
+        }
+
+        .nav__link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav__link:hover,
+        .nav__link.active-link {
+            color: #f0a500;
+        }
+
+        .nav__toggle {
+            display: none;
+        }
+
+        .home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .home__title {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .home__title-color {
+            color: #f0a500;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f0a500;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #333;
+        }
+
+        .home__social-icon {
+            font-size: 1.5rem;
+            color: #333;
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+        .home__social-icon:hover {
+            color: #f0a500;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about__container,
+        .skills__container,
+        .work__container,
+        .contact__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .about__img img,
+        .skills__img,
+        .work__img img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .skills__data,
+        .skills__data .skills__bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .skills__names,
+        .skills__bar,
+        .skills__percentage {
+            margin-right: 10px;
+        }
+
+        .skills__bar {
+            background-color: #e4e4e4;
+            width: 200px;
+            height: 10px;
+            border-radius: 5px;
+        }
+
+        .skills__html {
+            background-color: #f0a500;
+            width: 95%;
+        }
+
+        .skills__css {
+            background-color: #264de4;
+            width: 85%;
+        }
+
+        .skills__js {
+            background-color: #f7df1e;
+            width: 65%;
+        }
+
+        .skills__ux {
+            background-color: #41b883;
+            width: 85%;
+        }
+
+        .work__container a {
+            width: calc(33% - 20px);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .work__container a:hover {
+            transform: scale(1.05);
+        }
+
+        .contact__form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .contact__input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact__button {
+            padding: 10px;
+            background-color: #f0a500;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact__button:hover {
+            background-color: #333;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .footer__icon {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer__icon:hover {
+            color: #f0a500;
+        }
+
+        .resume-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .resume__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .resume__content {
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .resume__title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .resume__text {
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Om Yadav</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><a href="#resume" class="nav__link">Resume</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title">Hi,<br>I'm <span class="home__title-color">Om Yadav</span><br> Pre-Final Year Undergraduate<br> BTech Computer Science</h1>
+
+                <a href="#contact" class="button">Contact</a>
+            </div>
+
+            <div class="home__social">
+                <a href="http://linkedin.com/in/om-yadav-32b810219" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/predator49" class="home__social-icon"><i class='bx bxl-github'></i></a>
+            </div>
+                    <div class="home__img">
+                        <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <mask id="mask0" mask-type="alpha">
+                                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                                <image class="home__blob-img" x="50" y="60" href="my image.JPEG"/>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                </svg>
+            </div>
+        </section>
+
+        <!--===== ABOUT =====-->
+        <section class="about section" id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="assets/img/about.jpg" alt="">
+                </div>
+
+                <div>
+                    <h2 class="about__subtitle">I'm Om Yadav</h2>
+                    <p class="about__text">Highly motivated and ambitious 3rd-year B.Tech CSE student with a passion for Java programming and web development. Eager to apply theoretical knowledge gained through coursework to real-world projects, with a strong desire to continuously learn and grow in the field of software development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--===== SKILLS =====-->
+        <section class="skills section" id="skills">
+       
+
+           
+
+                <div>
+                    <img src="assets/img/work3.jpg" alt="" class="skills__img">
+                </div>
+            </div>
+        </section>
+
+        <!--===== WORK =====-->
+        <section class="work section" id="work">
+           
+
+            <div class="work__container bd-grid">
+                <a href="" class="work__img">
+                    <img src="assets/img/work1.jpg" alt="">
+                </a>
+                <a href="" class="work__img">
+                    <img src="assets/img/work2.jpg" alt="">
+                </a>
+                <a href="" class="work__img">
+                    <img src="assets/img/work3.jpg" alt="">
+                </a>
+                <a href="" class="work__img">
+                    <img src="assets/img/work4.jpg" alt="">
+                </a>
+                <a href="" class="work__img">
+                    <img src="assets/img/work5.jpg" alt="">
+                </a>
+                <a href="" class="work__img">
+                    <img src="assets/img/work6.jpg" alt="">
+                </a>
+            </div>
+        </section>
+
+        <!--===== RESUME =====-->
+        <section class="resume-section" id="resume">
+            <h2 class="section-title">Resume</h2>
+
+            <div class="resume__container bd-grid">
+                <div class="resume__content">
+                    <h3 class="resume__title">Work Experience</h3>
+                    <p class="resume__text">Oasis Infobyte (June 2023 - July 2023): Front-end Web Developer Intern. Developed multiple front-end projects.</p>
+                    <p class="resume__text">Bharat Intern (July 2022 - August 2022): Front-end Web Developer Intern. Managed website design and developed multiple front-end projects.</p>
+                </div>
+
+                <div class="resume__content">
+                    <h3 class="resume__title">Certifications</h3>
+                    <p class="resume__text">Advanced Topics in Front End Engineering - Meta [Link to certificate]</p>
+                    <p class="resume__text">Game Development in JAVA - Skill Risers [Link to certificate]</p>
+                    <p class="resume__text">Introduction to Web Development with HTML, CSS, and JavaScript - IBM [Link to certificate]</p>
+                    <p class="resume__text">Cloud Computing Basics - Learn Quest [Link to certificate]</p>
+                </div>
+
+                <div class="resume__content">
+                    <h3 class="resume__title">Projects</h3>
+                    <p class="resume__text">Game Development using Advanced Java concepts. [Link to Project]</p>
+                    <p class="resume__text">Gym Website using HTML, CSS, and JavaScript. [Link to Project]</p>
+                </div>
+
+                <div class="resume__content">
+                    <h3 class="resume__title">Achievements</h3>
+                    <p class="resume__text">5 stars in Hacker Rank (JAVA)</p>
+                    <p class="resume__text">Serving as Head of Management of Google Developer Student Clubs (GDSC)</p>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CONTACT =====-->
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact__container bd-grid">
+                <form action="" class="contact__form">
+                    <input type="text" placeholder="Name" class="contact__input">
+                    <input type="email" placeholder="Email" class="contact__input">
+                    <textarea name="" id="" cols="0" rows="10" class="contact__input" placeholder="Message"></textarea>
+                    <input type="submit" value="Send" class="contact__button button">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Om Yadav</p>
+        <div class="footer__social">
+            <a href="#" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="#" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="#" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; Om Yadav. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js
+
+/main.js"></script>
+</body>
+</html>
